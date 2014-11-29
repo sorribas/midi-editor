@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MIDI Editor</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+
+.hut-modal {
+    position: fixed;
+    overflow: hidden;
+
+    /* Position 100% above the screen so it can slide down */
+    top: -100%;
+    left: 0;
+
+    /* Hide modal until it is shown */
+    height: 0;
+    width: 100%;
+
+    z-index: 100;
+
+    /* Slide down from top */
+    /* Wait until it is slid up to change the height */
+    transition: top 0.3s, height 0s 0.3s;
+
+    background-color: rgba(238, 238, 238, 0.8);
+}
+
+.hut-modal.modal-shown {
+    top: 0;
+    height: 100%;
+    overflow: auto;
+
+    /* Offset for the dialog */
+    padding: 2rem 1rem;
+
+    /* Slide down from the top */
+    /* Do not transition height when closing */
+    transition: top 0.3s;
+}
+
+.hut-modal .modal-dialog {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #FFF;
+    border: 1px solid #999;
+}
+
+.hut-modal .modal-header {
+    margin: 0 1rem;
+}
+
+.hut-modal .modal-content {
+    margin: 0 1rem;
+    overflow: hidden;
+}
+
+.hut-modal .modal-footer {
+    margin: 0 1rem 1rem 1rem;
+    text-align: right;
+}
+      td {
+        width: 50px;
+        border: 1px solid black;
+      }
+
+      td.marked {
+        background-color: #aaa;
+      }
+
+      tr {
+        height: 22px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>MIDI Editor</h1>
+      <a class="btn btn-default" id="get-midi" href="#">Get MIDI</a>
+      <a class="btn btn-default" id="play" href="#">Play!</a>
+      <a class="btn btn-default" id="save" href="#">Save</a>
+      <a class="btn btn-default" id="open" href="#">Open</a>
+
+      <br />
+      <br />
+
+      <div class="row">
+        <div id="main" class="col-md-12">
+        </div>
+      </div>
+    </div>
+
+    <div id="save-modal" class="hut-modal">
+      <div class="modal-dialog">
+        <header class="modal-header">
+          <h3>Save song</h3>
+        </header>
+        <section style="margin: 0 1rem" class="">
+          <input id="song-name" type="text" />
+        </section>
+        <footer class="modal-footer">
+          <button class="btn" data-result="yes">Save</button>
+        </footer>
+      </div>
+    </div>
+
+    <div id="open-modal" class="hut-modal">
+      <div class="modal-dialog">
+        <header class="modal-header">
+          <h3>Open song!</h3>
+        </header>
+        <section id="song-list" style="margin: 0 1rem" class="">
+        </section>
+        <footer class="modal-footer">
+        </footer>
+      </div>
+    </div>
+
+  </body>
+
+  <script type="text/javascript" src="/bundle.js"></script>
+</html>

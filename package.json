@@ -1,0 +1,23 @@
+{
+  "name": "midi-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concat-stream": "^1.4.6",
+    "hut-modal": "^0.1.1",
+    "level-js": "^2.1.6",
+    "levelup": "^0.19.0",
+    "midimal": "^0.0.6",
+    "midifile": "^0.2.0",
+    "leveljs": "^0.0.0-a1",
+    "midistream": "^0.1.0",
+    "midiplayer": "^0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Sorribas <eduardo@sorribas.org> (http://sorribas.org/)",
+  "license": "MIT"
+}
