@@ -14,9 +14,12 @@
     "midistream": "^0.1.0",
     "midiplayer": "^0.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^7.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify index.js > bundle.js"
   },
   "author": "Eduardo Sorribas <eduardo@sorribas.org> (http://sorribas.org/)",
   "license": "MIT"
