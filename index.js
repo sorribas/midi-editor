@@ -25,7 +25,7 @@ document.querySelector('#play').addEventListener('click', function() {
 
       console.log(midiAccess.outputs());
       var midiPlayer = new MIDIPlayer({
-        'output': midiAccess.outputs()[5]
+        'output': midiAccess.outputs()[2]
       });
 
       var midiFile = new MIDIFile(buf.toArrayBuffer());
@@ -63,6 +63,7 @@ var openSong = function(key, modal) {
 
 document.querySelector('#open').addEventListener('click', function() {
   var list = document.querySelector('#song-list');
+  list.innerHTML = '';
   db.createKeyStream().on('data', function(key) {
     var p = document.createElement('p');
     var a = document.createElement('a');
