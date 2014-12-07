@@ -20,12 +20,9 @@ document.querySelector('#get-midi').addEventListener('click', function() {
 });
 
 document.querySelector('#play').addEventListener('click', function() {
-  ed.getMidi(function(buf) {
-    navigator.requestMIDIAccess().then(function(midiAccess) {
-
-      console.log(midiAccess.outputs());
-      var midiPlayer = new MIDIPlayer({
-        'output': midiAccess.outputs()[2]
+  var play = function(buf, output) {
+    var midiPlayer = new MIDIPlayer({
+        'output': output
       });
 
       var midiFile = new MIDIFile(buf.toArrayBuffer());
@@ -35,6 +32,27 @@ document.querySelector('#play').addEventListener('click', function() {
       midiPlayer.play(function() {
         console.log('Play ended');
       });
+  };
+
+  ed.getMidi(function(buf) {
+    navigator.requestMIDIAccess().then(function(midiAccess) {
+      console.log('midiaccess');
+      document.querySelector('#output-list').innerHTML = '';
+      midiAccess.outputs().forEach(function(output) {
+        var a = document.createElement('a');
+        a.innerHTML = output.name;
+        a.href = '#';
+        var p = document.createElement('p');
+        a.addEventListener('click', function() {
+          play(buf, output);
+          modal.hide();
+        });
+        p.appendChild(a);
+        document.querySelector('#output-list').appendChild(p);
+      });
+      console.log('w00t!');
+      var modal = hutModal(document.querySelector('#play-modal'));
+      modal.show();
     }, function() {});
   });
 });
