@@ -36,7 +36,6 @@ document.querySelector('#play').addEventListener('click', function() {
 
   ed.getMidi(function(buf) {
     navigator.requestMIDIAccess().then(function(midiAccess) {
-      console.log('midiaccess');
       document.querySelector('#output-list').innerHTML = '';
       midiAccess.outputs().forEach(function(output) {
         var a = document.createElement('a');
@@ -50,7 +49,6 @@ document.querySelector('#play').addEventListener('click', function() {
         p.appendChild(a);
         document.querySelector('#output-list').appendChild(p);
       });
-      console.log('w00t!');
       var modal = hutModal(document.querySelector('#play-modal'));
       modal.show();
     }, function() {});
